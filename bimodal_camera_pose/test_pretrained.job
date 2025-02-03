@@ -2,6 +2,8 @@
 #$ -N PoseCorrNets-test-pretrained
 #$ -l h_rt=24:00:00
 #$ -l gpu=1
+#$ -o /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/
+#$ -e /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/
 
 cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose
 
