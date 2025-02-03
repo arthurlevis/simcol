@@ -1,0 +1,13 @@
+#!/bin/bash
+#$ -N PoseCorrNets-train
+#$ -l h_rt=6:00:00
+#$ -l gpu=1
+#$ -o /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/train/
+#$ -e /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/train/
+
+# directories for storing output & error log files must exist
+
+cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose  # working directory of train.py
+
+python train.py \
+    '../SyntheticColon_I/' \
