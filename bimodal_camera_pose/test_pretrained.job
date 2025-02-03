@@ -1,0 +1,9 @@
+#!/bin/bash
+#SBATCH --job-name=PoseCorrNets-test-pretrained
+#SBATCH --time=24:00:00
+#SBATCH --gres=gpu:1
+
+python test.py \
+    '../SyntheticColon_I/' \
+    --pretrained_posenet './trained_models/posenet_binned/' \
+    --test-file 'test_file.txt'
