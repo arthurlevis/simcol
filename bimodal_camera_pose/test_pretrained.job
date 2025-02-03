@@ -3,6 +3,8 @@
 #$ -l h_rt=24:00:00
 #$ -l gpu=1
 
+cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose
+
 python test.py \
     '../SyntheticColon_I/' \
     --pretrained_posenet './trained_models/posenet_binned/' \
