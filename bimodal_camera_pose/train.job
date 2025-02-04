@@ -7,6 +7,9 @@
 
 # directories for storing output & error log files must exist
 
+source /home/zcemjml/anaconda3/etc/profile.d/conda.sh
+conda activate pytorch-simcol
+
 cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose  # working directory of train.py
 
 python train.py \
