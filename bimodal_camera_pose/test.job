@@ -12,4 +12,4 @@ cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose  # working directory of test
 python test.py \
     '../SyntheticColon_I/' \
     --pretrained_posenet './trained_models/posenet_binned/' \
-    --test-file 'test_file.txt'
+    --test-file './data/test_file.txt'
