@@ -28,6 +28,6 @@
 SyntheticColon_I/
 bimodal_camera_pose/checkpoints/
 bimodal_camera_pose/trained_models/
-*.pdf
-*.o
-*.e
+**/*.pdf
+**/*.o*
+**/*.e*
