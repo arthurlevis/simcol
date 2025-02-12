@@ -16,3 +16,8 @@ dependencies:
     - matplotlib
     - tensorboardX
     - scipy
+    - nibabel
+    - oyaml
+    - progressbar
+    - blessings
+    - scikit-image
