@@ -5,14 +5,12 @@
 #$ -o /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/
 #$ -e /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/
 
-# directories for storing output & error log files must exist
-
 source /home/zcemjml/anaconda3/etc/profile.d/conda.sh
 conda activate pytorch-simcol
 
-cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose  # working directory of test.py
+cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose 
 
 python test.py \
-    '../SyntheticColon_I/' \
-    --pretrained_posenet './trained_models/posenet_binned/' \
-    --test-file './data/test_file.txt'
+    ../SyntheticColon_I/ \
+    --pretrained_posenet ./trained_models/posenet_binned/ \
+    --test-file ./data/test_file.txt
