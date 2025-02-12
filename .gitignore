@@ -25,9 +25,10 @@
 /SimCol3D-task3_pose-docker/src/.DS_Store
 
 # Added directories & files
-SyntheticColon_I/
-bimodal_camera_pose/checkpoints/
-bimodal_camera_pose/trained_models/
+/SyntheticColon_I/
+/bimodal_camera_pose/checkpoints/
+/bimodal_camera_pose/trained_models/
+/assets
 **/*.pdf
 **/*.o*
 **/*.e*
