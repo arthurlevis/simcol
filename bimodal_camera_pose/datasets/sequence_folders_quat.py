@@ -8,7 +8,8 @@ Edited by Anita Rau, a.rau.16@ucl.ac.uk, 2023
 
 import torch.utils.data as data
 import numpy as np
-from path import Path
+# from path import Path
+from pathlib import Path  # use python's built-in package instead
 import random
 from PIL import Image
 from torchvision import transforms
