@@ -22,6 +22,8 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 @torch.no_grad()
 def main():
     args = OptionsTest().parse()
+
+    # uncomment when using other trained models
     args.pretrained_posenet = 'bimodal_camera_pose/trained_models/posenet_binned/posenet.tar'
 
     args.fs = 256
