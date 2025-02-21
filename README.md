@@ -1,5 +1,7 @@
 # [Bimodal Camera Pose Prediction for Endoscopy](https://arxiv.org/abs/2204.04968)
 
+(Modified by Arthur Levisalles)
+
 The data from our paper and sequences from additional anatomies can be accessed for the SimCol-to-3D MICCAI 2022 challenge.
 
 <p align="center">
