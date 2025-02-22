@@ -1,14 +1,13 @@
-#!/bin/bash
-#$ -N PoseCorrNets-train
-#$ -l h_rt=12:00:00
-#$ -l gpu=1
-#$ -o /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/train/
-#$ -e /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/train/
+#$ -l tmem=16G
+#$ -l h_rt=6:00:00
+#$ -l gpu=true
+#$ -S /bin/bash
+#$ -N posenet-train
+#$ -wd /home/alevisal/simcol/bimodal_camera_pose
+#$ -j y /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/train/
 
-source /home/zcemjml/anaconda3/etc/profile.d/conda.sh
+source /home/alevisal/anaconda3/etc/profile.d/conda.sh
 conda activate pytorch-simcol
 
-cd /home/zcemjml/Scratch/simcol/bimodal_camera_pose 
-
 python train.py \
-    '../SyntheticColon_I/' \
+    ../SyntheticColon_I/ \
