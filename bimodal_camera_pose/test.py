@@ -69,7 +69,11 @@ def main():
 def eval(args, offset):
     print('offset:', offset)
     args.with_resize = True
-    weights = torch.load(args.pretrained_posenet)
+
+    # weights = torch.load(args.pretrained_posenet)
+    print("CUDA available:", torch.cuda.is_available()) 
+    print("Device:", device)                            
+    weights = torch.load(args.pretrained_posenet, map_location=device)
 
     pose_net = models.PoseCorrNet(fs=args.fs, pose_decoder=args.pose_decoder).to(device)
     pose_net.load_state_dict(weights['state_dict'], strict=True)
