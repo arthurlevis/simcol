@@ -2,6 +2,8 @@
 Bimodal Camera Pose Prediction for Endoscopy.
 
 Anita Rau, a.rau.16@ucl.ac.uk, 2023
+
+Modified by Arthur Levisalles
 """
 
 import torch
@@ -23,8 +25,7 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 def main():
     args = OptionsTest().parse()
 
-    # uncomment when using other trained models
-    args.pretrained_posenet = 'bimodal_camera_pose/trained_models/posenet_binned/posenet.tar'
+    # args.pretrained_posenet = 'bimodal_camera_pose/trained_models/posenet_binned/posenet.tar'
 
     args.fs = 256
     args.dataset = 'S'
