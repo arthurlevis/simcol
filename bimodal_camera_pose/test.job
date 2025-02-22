@@ -1,14 +1,18 @@
+#!/bin/bash
 #$ -l tmem=16G
 #$ -l h_rt=6:00:00
-#$ -l gpu=true
 #$ -S /bin/bash
 #$ -N posenet-test-pretrained
 #$ -wd /home/alevisal/simcol/bimodal_camera_pose
-#$ -j y /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/
+#$ -o /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/  
+#$ -e /home/zcemjml/Scratch/simcol/bimodal_camera_pose/logs/test/  
+#$ -j y
 
-source /home/alevisal/anaconda3/etc/profile.d/conda.sh
+source /home/alevisal/miniconda3/etc/profile.d/conda.sh
 conda activate pytorch-simcol
 
-python test.py \
-    ../SyntheticColon_I/ \
-    --test-file ./data/test_file.txt
+python test.py ../SyntheticColon_I \
+  --test-file ./data/test_file.txt \
+  --binned 1 \
+  --frames-apart 5 \
+  --pretrained_posenet ./trained_models/posenet_binned/posenet.tar 
