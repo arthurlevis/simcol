@@ -18,6 +18,7 @@ import torch.nn as nn
 from options import OptionsTest
 from align_traj import align
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+import warnings
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
@@ -70,10 +71,12 @@ def eval(args, offset):
     print('offset:', offset)
     args.with_resize = True
 
-    # weights = torch.load(args.pretrained_posenet)
-    print("CUDA available:", torch.cuda.is_available()) 
-    print("Device:", device)                            
-    weights = torch.load(args.pretrained_posenet, map_location=device)
+    warnings.filterwarnings("ignore", category=FutureWarning)  # 'weights_only=False' warning
+    weights = torch.load(args.pretrained_posenet)
+    
+    # # Debug to check if node uses GPU 
+    # print("CUDA available:", torch.cuda.is_available()) 
+    # print("Device:", device)                            
 
     pose_net = models.PoseCorrNet(fs=args.fs, pose_decoder=args.pose_decoder).to(device)
     pose_net.load_state_dict(weights['state_dict'], strict=True)
