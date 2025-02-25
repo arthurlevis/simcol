@@ -99,6 +99,7 @@ def set_id_grid(depth):
 
 if __name__ == "__main__":
     datasetname = 'S'
-    scene = '1'
-    data_root = '/path/to/data/'
+    scene = '15'
+    data_root = '../SyntheticColon_I/Frames_S15' 
+    # data_root = '/home/alevisal/simcol/SyntheticColon_I/Frames_S15'  # full path
     plot_growing_cloud(datasetname, scene, data_root)
