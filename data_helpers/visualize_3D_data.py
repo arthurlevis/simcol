@@ -84,8 +84,9 @@ def plot_growing_cloud(datasetname, scene, data_root):
         #                          s=1)
         
         # Camera Poses Visualization
-        if j % 1 == 0:  # original condition is j % 20
-            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.2)  # original pyramid scale = 0.7
+        if j % 1 == 20:  # original condition is j % 20
+            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.7)  # original pyramid scale = 0.7
+            visualizer.plot_interactive()
 
     # visualizer.show('pointcloud_' + datasetname + '_' + scene)  # output pointcloud
     visualizer.show('poses_' + datasetname + '_' + scene)
