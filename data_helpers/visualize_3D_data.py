@@ -1,3 +1,7 @@
+"""
+Modified by Arthur Levisalles
+"""
+
 import torch
 from skimage.transform import resize as imresize
 import numpy as np
@@ -27,7 +31,8 @@ def plot_growing_cloud(datasetname, scene, data_root):
     rotations = np.array(rotations)
     poses = np.concatenate([locations, rotations], 1)
 
-    r = R.from_quat(rotations).as_dcm()
+    # r = R.from_quat(rotations).as_dcm()  # method has been deprecated in newer versions of scipy
+    r = R.from_quat(rotations).as_matrix()
 
     TM = np.eye(4)
     TM[1, 1] = -1
