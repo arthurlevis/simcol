@@ -62,9 +62,9 @@ def plot_growing_cloud(datasetname, scene, data_root):
     intrinsics[1, 1] = 237.5
     intrinsics[1, 2] = 237.5
 
-    for j in range(0, len(poses_mat), 1):  # original step size = 5
+    for j in range(0, len(poses_mat), 1):  # original step size = 5 (only relevant for point cloud generation)
 
-        # # Comment block below to only get camera poses
+        # # Point Coud Visualization
         # gt = poses_mat[j]
         # depth0 = np.array(Image.open(data_root +'Frames_'+datasetname + scene + '/Depth_' + str(j).zfill(4) + '.png'))/256/255 * 20
 
@@ -82,8 +82,10 @@ def plot_growing_cloud(datasetname, scene, data_root):
         # visualizer.ax3d1.scatter(cloud_gt[0, 0, indeces], cloud_gt[0, 1, indeces], cloud_gt[0, 2, indeces],
         #                          c=im0[indeces, :],
         #                          s=1)
-        if j % 20 == 0:
-            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.7)  # original pyramid scale = 0.7
+        
+        # Camera Poses Visualization
+        if j % 1 == 0:  # original condition is j % 20
+            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.5)  # original pyramid scale = 0.7
 
     # visualizer.show('pointcloud_' + datasetname + '_' + scene)  # output pointcloud
     visualizer.show('poses_' + datasetname + '_' + scene)
