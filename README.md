@@ -4,6 +4,10 @@
 
 The data from the original paper and sequences from additional anatomies can be accessed for the SimCol-to-3D MICCAI 2022 challenge.
 
+<p align="center">
+  <img src="assets/pointcloud_S_1.png" alt="Example data visualization" width="600" />
+</p>
+
 ## ⚙ Getting started
 
 The full dataset is now publicly available [here](https://rdr.ucl.ac.uk/articles/dataset/Simcol3D_-_3D_Reconstruction_during_Colonoscopy_Challenge_Dataset/24077763). Access through Synapse is no longer required. To visualize the data like above run `visualize_3D_data.py` with the updated path to the data. 
