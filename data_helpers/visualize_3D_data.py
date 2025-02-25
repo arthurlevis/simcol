@@ -62,9 +62,7 @@ def plot_growing_cloud(datasetname, scene, data_root):
     intrinsics[1, 1] = 237.5
     intrinsics[1, 2] = 237.5
 
-    for j in range(0, len(poses_mat), 5):
-
-        print(len(poses_mat))  # should be 1201
+    for j in range(0, len(poses_mat), 1):  # original step size = 5
 
         # # Comment block below to only get camera poses
         # gt = poses_mat[j]
@@ -85,7 +83,7 @@ def plot_growing_cloud(datasetname, scene, data_root):
         #                          c=im0[indeces, :],
         #                          s=1)
         if j % 20 == 0:
-            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.7)
+            visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.1)  # original pyramid scale = 0.7
 
     # visualizer.show('pointcloud_' + datasetname + '_' + scene)  # output pointcloud
     visualizer.show('poses_' + datasetname + '_' + scene)
