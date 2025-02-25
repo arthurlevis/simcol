@@ -21,3 +21,4 @@ dependencies:
     - progressbar
     - blessings
     - scikit-image
+    - plotly
