@@ -63,26 +63,32 @@ def plot_growing_cloud(datasetname, scene, data_root):
     intrinsics[1, 2] = 237.5
 
     for j in range(0, len(poses_mat), 5):
-        gt = poses_mat[j]
-        depth0 = np.array(Image.open(data_root +'Frames_'+datasetname + scene + '/Depth_' + str(j).zfill(4) + '.png'))/256/255 * 20
 
-        im0 = plt.imread(data_root + 'Frames_'+datasetname + scene + '/FrameBuffer_' + str(j).zfill(4) + '.png')
-        im0 = im0[:, :, :3].reshape((-1, 3))
+        print(len(poses_mat))  # should be 1201
 
-        cam_coords0 = pixel2cam(torch.tensor(depth0.reshape((1, 475, 475))).float(),
-                                torch.tensor(intrinsics).inverse().float())
-        cam_coords_flat0 = cam_coords0.reshape(1, 3, -1).numpy()
+        # # Comment block below to only get camera poses
+        # gt = poses_mat[j]
+        # depth0 = np.array(Image.open(data_root +'Frames_'+datasetname + scene + '/Depth_' + str(j).zfill(4) + '.png'))/256/255 * 20
 
-        rot_gt, tr_gt = gt[:3, :3], gt[:3, -1:]
-        cloud_gt = rot_gt @ cam_coords_flat0 + tr_gt
-        indeces = np.random.choice(225625, size=1000, replace=False)
+        # im0 = plt.imread(data_root + 'Frames_'+datasetname + scene + '/FrameBuffer_' + str(j).zfill(4) + '.png')
+        # im0 = im0[:, :, :3].reshape((-1, 3))
 
-        visualizer.ax3d1.scatter(cloud_gt[0, 0, indeces], cloud_gt[0, 1, indeces], cloud_gt[0, 2, indeces],
-                                 c=im0[indeces, :],
-                                 s=1)
+        # cam_coords0 = pixel2cam(torch.tensor(depth0.reshape((1, 475, 475))).float(),
+        #                         torch.tensor(intrinsics).inverse().float())
+        # cam_coords_flat0 = cam_coords0.reshape(1, 3, -1).numpy()
+
+        # rot_gt, tr_gt = gt[:3, :3], gt[:3, -1:]
+        # cloud_gt = rot_gt @ cam_coords_flat0 + tr_gt
+        # indeces = np.random.choice(225625, size=1000, replace=False)
+
+        # visualizer.ax3d1.scatter(cloud_gt[0, 0, indeces], cloud_gt[0, 1, indeces], cloud_gt[0, 2, indeces],
+        #                          c=im0[indeces, :],
+        #                          s=1)
         if j % 20 == 0:
             visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.7)
-    visualizer.show('pointcloud_' + datasetname + '_' + scene)
+
+    # visualizer.show('pointcloud_' + datasetname + '_' + scene)  # output pointcloud
+    visualizer.show('poses_' + datasetname + '_' + scene)
 
 def pixel2cam(depth, intrinsics_inv):
     b, h, w = depth.size()
