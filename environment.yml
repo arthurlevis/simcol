@@ -21,4 +21,4 @@ dependencies:
     - progressbar
     - blessings
     - scikit-image
-    - plotly
+    - mpld3
