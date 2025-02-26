@@ -62,7 +62,7 @@ class CameraPoseVisualizerSlim:
         plt.savefig(name + '.png', bbox_inches='tight',pad_inches=0) 
     
     
-    def plot_interactive(self, name='interactive_plot'):
+    def plot_interactive(self, name='deleteme'):
         """
         Adapted from https://github.com/demul/extrinsic2pyramid/blob/main/demo3.py
         """
@@ -94,4 +94,4 @@ class CameraPoseVisualizerSlim:
             ))
 
         # Save as html
-        fig.write_html()
+        fig.write_html(name + '.html')
