@@ -5,8 +5,7 @@ from matplotlib.patches import Patch
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from scipy.spatial.transform import Rotation as R
 import torch
-# import plotly.graph_objs as go  # new
-import mpld3
+
 
 class CameraPoseVisualizerSlim:
     """
@@ -59,46 +58,9 @@ class CameraPoseVisualizerSlim:
         self.ax3d2.legend(loc='upper left', handles=list_handle)
 
 
-    def show(self, name='deleteme'):  # saves png
+    def save(self, name='deleteme'): 
         plt.savefig(name + '.png', bbox_inches='tight',pad_inches=0) 
     
     
-    def plot_interactive(self, name='deleteme'):
-        # """
-        # Adapted from https://github.com/demul/extrinsic2pyramid/blob/main/demo3.py
-        # """
-        # # Collect all traces (meshes) from the 3D plot
-        # traces = self.ax3d1.collections  # Access the 3D meshes
-
-        # layout = go.Layout(
-        #     title="Interactive 3D Camera Pose Visualization",
-        #     scene=dict(
-        #         xaxis=dict(title="X", range=[-5, 15]),
-        #         yaxis=dict(title="Y", range=[0, 20]),
-        #         zaxis=dict(title="Z", range=[-5, 15]),
-        #     ),
-        #     showlegend=True,
-        # )
-
-        # fig = go.Figure(layout=layout)
-
-        # # Add each mesh to the Plotly figure
-        # for trace in traces:
-        #     # Extract vertices and faces from the mesh
-        #     vertices = np.array([np.array(face)[:, :3] for face in trace.get_segments()]).reshape((-1, 3))
-        #     faces = np.array([np.arange(len(vertices))])
-
-        #     fig.add_trace(go.Mesh3d(
-        #         x=vertices[:, 0], y=vertices[:, 1], z=vertices[:, 2],
-        #         i=faces[:, 0], j=faces[:, 1], k=faces[:, 2],
-        #         opacity=0.35, color=trace.get_facecolor()[0]
-        #     ))
-
-        # # Save as html
-        # fig.write_html(name + '.html')
-
-        # Make sure figure is fully rendered
-        self.fig.tight_layout()
-        
-        # Save the interactive HTML version
-        mpld3.save_html(self.fig, name + '.html')
+    # def plot_interactive(self, name='deleteme'):
+       

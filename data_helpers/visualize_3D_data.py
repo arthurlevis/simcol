@@ -87,9 +87,9 @@ def plot_growing_cloud(datasetname, scene, data_root):
         if j % 1 == 20:  # original condition is j % 20
             visualizer.extrinsic2pyramidAbs(poses_mat[j], 'b', 0.7)  # original pyramid scale = 0.7
 
-    # visualizer.show('pointcloud_' + datasetname + '_' + scene)  # output pointcloud
-    # visualizer.show('poses_' + datasetname + '_' + scene)  # output png
-    visualizer.plot_interactive('poses_' + datasetname + '_' + scene)  # output html
+    # Save Output
+    # visualizer.save('pointcloud_' + datasetname + '_' + scene)  # pointcloud
+    visualizer.save('poses_' + datasetname + '_' + scene)  # camera poses only
 
 def pixel2cam(depth, intrinsics_inv):
     b, h, w = depth.size()
