@@ -58,8 +58,8 @@ class CameraPoseVisualizerSlim:
         self.ax3d2.legend(loc='upper left', handles=list_handle)
 
 
-    def show(self, name='deleteme'):
-        plt.savefig(name + '.png', bbox_inches='tight',pad_inches=0)
+    def show(self, name='deleteme'):  # saves png 
+        plt.savefig(name + '.png', bbox_inches='tight',pad_inches=0) 
     
     
     def plot_interactive(self, name='interactive_plot'):
@@ -93,5 +93,5 @@ class CameraPoseVisualizerSlim:
                 opacity=0.35, color=trace.get_facecolor()[0]
             ))
 
-        # Show the interactive plot
-        fig.show()
+        # Save as html
+        fig.write_html()
