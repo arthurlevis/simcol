@@ -58,7 +58,7 @@ class CameraPoseVisualizerSlim:
         self.ax3d2.legend(loc='upper left', handles=list_handle)
 
 
-    def show(self, name='deleteme'):  # saves png 
+    def show(self, name='deleteme'):  # saves png
         plt.savefig(name + '.png', bbox_inches='tight',pad_inches=0) 
     
     
