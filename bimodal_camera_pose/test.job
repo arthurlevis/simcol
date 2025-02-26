@@ -2,7 +2,7 @@
 #$ -l tmem=16G
 #$ -l h_rt=6:00:00
 #$ -l gpu=true
-#$ -q test.gpu.q
+#$ -q gpu.q
 #$ -S /bin/bash
 #$ -N posenet-test-pretrained
 #$ -wd /home/alevisal/simcol/bimodal_camera_pose
