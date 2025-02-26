@@ -7,7 +7,6 @@
 #$ -N posenet-test-pretrained
 #$ -wd /home/alevisal/simcol/bimodal_camera_pose
 #$ -o /home/alevisal/simcol/bimodal_camera_pose/logs/test/  
-#$ -e /home/alevisal/simcol/bimodal_camera_pose/logs/test/  
 #$ -j y
 
 source /home/alevisal/miniconda3/etc/profile.d/conda.sh
