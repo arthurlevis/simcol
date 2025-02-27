@@ -270,7 +270,7 @@ def eval(args, offset):
     print('The average rotation in degrees per delta step is ', gt_rot_magb)
     print('The total length of the trajectory in cm is ', np.sum(np.linalg.norm(gts_inv, ord=2, axis=1)))
 
-    if True:  # True if you want to plot trajectories
+    if False:  # True if you want to plot trajectories
         fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(6, 6))
         ax[0, 0].axis('off')
         ax[0, 1].axis('off')
