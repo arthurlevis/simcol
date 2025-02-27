@@ -89,6 +89,9 @@ def eval(args, offset):
     pose_net.load_state_dict(weights['state_dict'], strict=True)
     pose_net.eval()
 
+    # Start counter 
+    pose_count = 0
+
     val_set = SequenceFolder(
         args.data,
         seed=1,
@@ -106,9 +109,6 @@ def eval(args, offset):
     val_loader = torch.utils.data.DataLoader(
         val_set, batch_size=1, shuffle=False,
         num_workers=args.workers, pin_memory=True)
-    
-    # Count predicted poses
-    pose_count = []
 
     gts = []
     preds = []
