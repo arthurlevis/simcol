@@ -26,13 +26,14 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 def main():
     args = OptionsTest().parse()
 
+    # # Comment lines below to prevent overriding test options
     # args.pretrained_posenet = 'bimodal_camera_pose/trained_models/posenet_binned/posenet.tar'
+    # args.fs = 256  # number of features in PoseNet
+    # args.dataset = 'S'
+    # args.frames_apart = 5
+    # args.binned = 1
+    # args.im_size = 256
 
-    args.fs = 256
-    args.dataset = 'S'
-    args.frames_apart = 5
-    args.binned = 1
-    args.im_size = 256
     ATEs_for = []
     ATEs_back = []
     RTEs_for = []
@@ -43,8 +44,11 @@ def main():
     rots_back = []
     avg_translations = []
     total_translations = []
-    for i in range(5):  # image pairs are five frames apart by default, so average over five runs with start index i = 0,...,4
-        atef, ateb, rtef, rteb, rotf, rotb, acc_for, acc_back ,avg_trans,total_trans = eval(args, i)
+    total_pose_count = 0
+
+    for i in range(args.frames_apart):  # average by the value chosen for --frames-apart
+        
+        atef, ateb, rtef, rteb, rotf, rotb, acc_for, acc_back ,avg_trans,total_trans, pose_count = eval(args, i)
         ATEs_for.append(atef)
         ATEs_back.append(ateb)
         RTEs_for.append(rtef)
@@ -55,6 +59,8 @@ def main():
         rots_back.append(rotb)
         avg_translations.append(avg_trans)
         total_translations.append(total_trans)
+        total_pose_count += pose_count
+
     print('\n AVERAGED RESULTS:\n')
     print('ATE forward average: ', np.mean(ATEs_for))
     print('ATE backward average: ', np.mean(ATEs_back))
@@ -66,6 +72,7 @@ def main():
     print('Accuracy back average: ', np.mean(accus_back))
     print('avg step size', np.mean(avg_translations))
     print('avg total length', np.mean(total_translations))
+    print(f"total number of poses predicted: {total_pose_count}")
 
 def eval(args, offset):
     print('offset:', offset)
@@ -99,6 +106,9 @@ def eval(args, offset):
     val_loader = torch.utils.data.DataLoader(
         val_set, batch_size=1, shuffle=False,
         num_workers=args.workers, pin_memory=True)
+    
+    # Count predicted poses
+    pose_count = []
 
     gts = []
     preds = []
@@ -115,6 +125,8 @@ def eval(args, offset):
 
     for i, (tgt_img, ref_imgs, _, _, pose_gt, pose_inv_gt, _, _, tgt_name,ref_name,pose_mat,pose_inv_mat)in enumerate(val_loader):
 
+        pose_count += 1  # increment for each pose
+        
         tgt_img = tgt_img.to(device)
         ref_imgs = [img.to(device) for img in ref_imgs]
         pose_gt = pose_gt.to(device).float()
@@ -178,6 +190,9 @@ def eval(args, offset):
     confidence = np.stack(confidence)
     acc_for = np.mean(acc_for)
     acc_back = np.mean(acc_back)
+
+    # Print number of predicted poses per offset
+    print(f"Number of predicted poses for offset{offset}: {pose_count}")
 
 
     def get_traj(first, rots, trans, direction='forward'):
