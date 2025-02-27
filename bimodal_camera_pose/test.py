@@ -295,7 +295,7 @@ def eval(args, offset):
         fig.suptitle('Predicted and Ground Truth Trajectory')
         fig.savefig('traj_real' + str(offset) +'.png')
 
-    return ATE, ATEb, RTE, RTEb, ROT, ROTb, acc_for, acc_back, np.mean(np.linalg.norm(gts_inv, ord=2, axis=1)), np.sum(np.linalg.norm(gts_inv, ord=2, axis=1))
+    return ATE, ATEb, RTE, RTEb, ROT, ROTb, acc_for, acc_back, np.mean(np.linalg.norm(gts_inv, ord=2, axis=1)), np.sum(np.linalg.norm(gts_inv, ord=2, axis=1)), pose_count
 
 
 def compute_pose_with_inv(pose_net, tgt_img, ref_imgs):
