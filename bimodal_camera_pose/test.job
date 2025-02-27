@@ -4,7 +4,7 @@
 #$ -l gpu=true
 #$ -q gpu.q
 #$ -S /bin/bash
-#$ -N posenet-test-pretrained-visual
+#$ -N posenet-test-pretrained
 #$ -wd /home/alevisal/simcol/bimodal_camera_pose
 #$ -o /home/alevisal/simcol/bimodal_camera_pose/logs/test/  
 #$ -j y
