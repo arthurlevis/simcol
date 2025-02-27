@@ -4,7 +4,7 @@
 #$ -l gpu=true
 #$ -q gpu.q
 #$ -S /bin/bash
-#$ -N posenet-test-pretrained-visual
+#$ -N posenet-test-pretrained-no_offset
 #$ -wd /home/alevisal/simcol/bimodal_camera_pose
 #$ -o /home/alevisal/simcol/bimodal_camera_pose/logs/test/  
 #$ -j y
@@ -14,5 +14,5 @@ conda activate pytorch-simcol
 
 python test.py ../SyntheticColon_I \
   --test-file ./data/test_file.txt \
-  --frames-apart 5 \
+  --frames-apart 1 \
   --pretrained_posenet ./trained_models/posenet_binned/posenet.tar 
