@@ -9,7 +9,7 @@ To replicate the results in our Bimodal Camera Pose paper, download SyntheticCol
 Download our pretrained model [here](https://drive.google.com/file/d/1aHWPqS1X8v-T2V9ssqO-qz7R-e6xf5GB/view?usp=share_link) and save it to `bimodal_camera_pose/trained_models/posenet_binned`. 
 
 
-## Testing
+<!-- ## Testing
 
 ```
 python test.py /path/to/SyntheticColon_I --test-file /path/to/test_file.txt
@@ -19,7 +19,7 @@ python test.py /path/to/SyntheticColon_I --test-file /path/to/test_file.txt
 ## Training
 
 ```
-python train.py /path/to/SyntheticColon_I --name my_exp_name --batch_size 128 --frames-apart 5 --train-file /path/to/train_file.txt --val-file /path/to/val_file.txt --epochs 50 --lr 0.001
+python train.py /path/to/SyntheticColon_I --name my_exp_name --batch_size 128 --frames-apart 5 --train-file /path/to/train_file.txt --val-file /path/to/val_file.txt --epochs 50 --lr 0.001 -->
 ```
 
 
