@@ -16,7 +16,6 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 from path import Path
-# from pathlib import Path  # use python's built-in package instead
 from logger import TermLogger, AverageMeter
 from tensorboardX import SummaryWriter
 
